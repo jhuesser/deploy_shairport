@@ -112,6 +112,15 @@ function confShairplay {
   cp shairport /usr/bin/shairport
   service shairport start
   service shairport status
-  
+
 
 }
+
+aptUp
+installPlayer
+setVol
+downloadFiles
+updateFirmware
+confAlsa
+confAvhi
+confShairplay
