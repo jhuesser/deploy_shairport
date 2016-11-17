@@ -60,6 +60,7 @@ function setVol {
 }
 
 function downloadFiles {
+  cd $workingdir
   apt-get install build-essential libssl-dev libcrypt-openssl-rsa-perl libao-dev libio-socket-inet6-perl libwww-perl avahi-utils pkg-config git chkconfig libssl-dev libavahi-client-dev libasound2-dev pcregrep
   git clone git://github.com/Hexxeh/rpi-update.git
   git clone -b 1.0-dev git://github.com/abrasive/shairport.git
