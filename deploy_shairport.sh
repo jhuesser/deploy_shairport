@@ -19,7 +19,7 @@ function aptUp {
 function installPlayer {
   apt-get -y install omxplayer
   chmod a+rw /dev/vchiq
-  read -p "Please select default output: [A]udio jack | [h]dmi" output
+  read -p "Please select default output: [A]udio jack | [h]dmi: " output
   if [[ -z "$output" ]] || [[ $output == "A" ]] || [[ $output == "a" ]]; then
     amixer cset numid=3 1
   elif [[ -z "$output" ]] || [[ $output == "h" ]] || [[ $output == "H" ]]; then
