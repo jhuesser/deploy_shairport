@@ -95,7 +95,7 @@ function confAvhi {
 
 
 function confShairplay {
-  cd $shairportrepodir
+  cd $shairportrepodir/shairport
   ./configure
   make
   make install
