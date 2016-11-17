@@ -102,6 +102,7 @@ function confShairplay {
 
   chmod +x shairport
   chkconfig shairport on
+  mv /etc/init.d/shairport /usr/bin/shairport
   cp shairport /etc/init.d/shairport
   chkconfig shairport off
 
