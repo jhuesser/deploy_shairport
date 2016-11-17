@@ -108,7 +108,7 @@ function confShairplay {
   cd $workingdir
   chmod +x shairport-watchdog.sh
   cp shairport-watchdog.sh /root/shairport-watchdog.sh
-  (crontab -l 2>/dev/null; echo "* * * * * /root/shairport-watchdog.sh) | crontab -
+  (crontab -l 2>/dev/null; echo "* * * * * /root/shairport-watchdog.sh") | crontab -
 
   cp shairport /usr/bin/shairport
   service shairport start
