@@ -6,7 +6,9 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 workingdir=/tmp/shairport_install
+shairportrepodir=$workingdir/git
 mkdir -p $workingdir
+mkdir -p $shairportrepodir
 cp ./* $workingdir
 cd $workingdir
 
@@ -60,8 +62,7 @@ function setVol {
 }
 
 function downloadFiles {
-  mkdir -p $workingdir/git
-  cd $workingdir/git
+  cd $shairportrepodir
 
   apt-get install build-essential libssl-dev libcrypt-openssl-rsa-perl libao-dev libio-socket-inet6-perl libwww-perl avahi-utils pkg-config git chkconfig libssl-dev libavahi-client-dev libasound2-dev pcregrep
   git clone git://github.com/Hexxeh/rpi-update.git
@@ -70,6 +71,7 @@ function downloadFiles {
   gconftool-2 -t string --set /system/gstreamer/0.10/default/audiosink pulsesink
   modprobe snd_bcm2835
   wget https://snippets.khromov.se/wp-content/uploads/2013/04/piano2.wav
+  cd $workingdir
 }
 
 function updateFirmware {
@@ -98,7 +100,7 @@ cat <(fgrep -i -v "$cmd" <(crontab -l)) <(echo "$job") | crontab -
 }
 
 function confShairplay {
-  cd shairport
+  cd $shairportrepodir
   ./configure
   make
   make install
@@ -108,6 +110,7 @@ function confShairplay {
   cp shairport /etc/init.d/shairport
   chkconfig shairport off
 
+  cd $workingdir
   chmod +x shairport-watchdog.sh
   cp shairport-watchdog.sh /root/shairport-watchdog.sh
   setupCron "* * * * *" "/root/shairport-watchdog.sh"
