@@ -75,17 +75,17 @@ function downloadFiles {
 }
 
 function updateFirmware {
-  chmod +x ./rpi-update/rpi-update
-  ./rpi-update/rpi-update
+  chmod +x $shairportrepodir/rpi-update/rpi-update
+  $shairportrepodir/rpi-update/rpi-update
 }
 
 function confAlsa {
-  cp alsa.conf /usr/share/alsa/alsa.conf
+  cp $workingdir/alsa.conf /usr/share/alsa/alsa.conf
 
 }
 
 function confAvhi {
-  cp avahi-daemon /etc/init.d/avahi-daemon
+  cp $workingdir/avahi-daemon /etc/init.d/avahi-daemon
   service avahi-daemon restart
   chkconfig avahi-daemon on
   echo "You\'ll now hear a piano...."
