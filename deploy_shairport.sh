@@ -101,9 +101,10 @@ function confShairplay {
   make install
 
   chmod +x shairport
-  chkconfig shairport on
+
   #mv /etc/init.d/shairport /usr/bin/shairport
   cp $workingdir/shairport /etc/init.d/shairport
+	chkconfig shairport on
   chkconfig shairport off
 
   cd $workingdir
